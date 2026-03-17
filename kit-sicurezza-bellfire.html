@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Configura il tuo Kit Sicurezza — Bell Fire</title>
+<meta name="description" content="Configura il kit antincendio obbligatorio per la tua nuova attività">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0D1117;
+    --card: #161B22;
+    --card-up: #1C2129;
+    --border: rgba(255,255,255,0.07);
+    --border-on: rgba(232,70,30,0.4);
+    --text: #E6EDF3;
+    --text2: #8B949E;
+    --text3: #484F58;
+    --fire: #E84A1E;
+    --fire2: #FF6333;
+    --fire-bg: rgba(232,70,30,0.1);
+    --green: #2EA043;
+    --green-bg: rgba(46,160,67,0.1);
+    --amber: #D29922;
+    --r: 16px;
+    --rs: 10px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family:'Outfit',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100dvh;
+    padding-bottom:env(safe-area-inset-bottom);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ═══ HEADER ═══ */
+  .head {
+    text-align:center;
+    padding:2rem 1.5rem 1.5rem;
+    background:linear-gradient(180deg, rgba(232,70,30,0.06) 0%, transparent 100%);
+  }
+  .head .flame {
+    width:48px; height:48px;
+    border-radius:14px;
+    background:linear-gradient(135deg, var(--fire), #B83214);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:1rem;
+    box-shadow:0 8px 24px rgba(232,70,30,0.25);
+  }
+  .head .flame svg { width:24px; height:24px; }
+  .head h1 {
+    font-size:1.5rem;
+    font-weight:700;
+    letter-spacing:-0.3px;
+    line-height:1.2;
+    margin-bottom:0.4rem;
+  }
+  .head h1 span { color:var(--fire); }
+  .head .sub {
+    font-size:0.88rem;
+    color:var(--text2);
+    font-weight:300;
+    line-height:1.5;
+  }
+
+  /* ═══ TUTORIAL ═══ */
+  .tutorial {
+    margin:1rem 1rem 0;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--r);
+    padding:1.25rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .tutorial::before {
+    content:'';
+    position:absolute;
+    top:0;left:0;right:0;
+    height:3px;
+    background:linear-gradient(90deg, var(--fire), var(--amber), var(--fire));
+  }
+  .tutorial .tut-title {
+    font-weight:600;
+    font-size:0.88rem;
+    margin-bottom:0.75rem;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .tutorial .steps {
+    display:flex;
+    flex-direction:column;
+    gap:0.6rem;
+  }
+  .tutorial .step {
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    font-size:0.82rem;
+    color:var(--text2);
+    line-height:1.5;
+    font-weight:300;
+  }
+  .tutorial .step .num {
+    width:22px; height:22px;
+    border-radius:50%;
+    background:var(--fire-bg);
+    color:var(--fire);
+    font-size:0.7rem;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    margin-top:1px;
+  }
+
+  /* ═══ SECTION ═══ */
+  .section {
+    padding:1.5rem 1rem 0;
+  }
+  .section-label {
+    font-size:0.68rem;
+    font-weight:600;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--fire);
+    margin-bottom:0.5rem;
+  }
+  .section-title {
+    font-size:1.15rem;
+    font-weight:700;
+    margin-bottom:1rem;
+  }
+
+  /* ═══ ITEM CARD ═══ */
+  .item {
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--r);
+    padding:1rem 1.1rem;
+    margin-bottom:0.6rem;
+    display:flex;
+    align-items:center;
+    gap:0.9rem;
+    transition:all 0.2s;
+  }
+  .item .ic {
+    width:44px; height:44px;
+    border-radius:var(--rs);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .ic.red { background:var(--fire-bg); color:var(--fire); }
+  .ic.grn { background:var(--green-bg); color:var(--green); }
+  .item .txt { flex:1; min-width:0; }
+  .item .txt .nm {
+    font-weight:600;
+    font-size:0.88rem;
+    line-height:1.3;
+  }
+  .item .txt .ds {
+    font-size:0.75rem;
+    color:var(--text3);
+    font-weight:300;
+    margin-top:2px;
+  }
+  .item .pr {
+    font-weight:700;
+    font-size:1rem;
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+
+  /* Hidden items */
+  .item.hidden { display:none; }
+  .item.swap-in {
+    border-color:var(--border-on);
+    background:linear-gradient(135deg, rgba(232,70,30,0.04), var(--card));
+  }
+
+  /* ═══ OPTION TOGGLE ═══ */
+  .opt {
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--r);
+    padding:1rem 1.1rem;
+    margin-bottom:0.6rem;
+    display:flex;
+    align-items:center;
+    gap:0.9rem;
+    cursor:pointer;
+    transition:all 0.25s;
+    -webkit-user-select:none;
+    user-select:none;
+  }
+  .opt:active { transform:scale(0.985); }
+  .opt.on {
+    border-color:var(--border-on);
+    background:linear-gradient(135deg, rgba(232,70,30,0.06), var(--card));
+  }
+  .opt .txt { flex:1; }
+  .opt .txt .nm { font-weight:600; font-size:0.88rem; }
+  .opt .txt .ds { font-size:0.75rem; color:var(--text2); font-weight:300; margin-top:2px; line-height:1.4; }
+  .opt .diff {
+    font-weight:700;
+    font-size:0.82rem;
+    color:var(--amber);
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+
+  /* Toggle pill */
+  .pill {
+    width:44px; height:26px;
+    border-radius:13px;
+    background:var(--bg);
+    border:1.5px solid var(--border);
+    position:relative;
+    flex-shrink:0;
+    transition:all 0.3s;
+  }
+  .pill::after {
+    content:'';
+    position:absolute;
+    width:20px; height:20px;
+    border-radius:50%;
+    background:var(--text3);
+    top:2px; left:2px;
+    transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .opt.on .pill {
+    background:var(--fire);
+    border-color:var(--fire);
+  }
+  .opt.on .pill::after {
+    background:#fff;
+    transform:translateX(18px);
+  }
+
+  /* ═══ DELIVERY ═══ */
+  .del-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0.6rem;
+  }
+  .del {
+    background:var(--card);
+    border:2px solid var(--border);
+    border-radius:var(--r);
+    padding:1.1rem 0.8rem;
+    text-align:center;
+    cursor:pointer;
+    transition:all 0.25s;
+    -webkit-user-select:none;
+    user-select:none;
+  }
+  .del:active { transform:scale(0.97); }
+  .del.on {
+    border-color:var(--fire);
+    background:linear-gradient(180deg, rgba(232,70,30,0.08), var(--card));
+  }
+  .del .del-ic {
+    width:40px; height:40px;
+    border-radius:50%;
+    background:var(--fire-bg);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:0.6rem;
+    color:var(--fire);
+  }
+  .del .del-nm { font-weight:600; font-size:0.85rem; margin-bottom:2px; }
+  .del .del-ds { font-size:0.72rem; color:var(--text3); font-weight:300; line-height:1.4; }
+  .del .del-pr {
+    font-weight:700;
+    font-size:1.15rem;
+    margin-top:0.6rem;
+  }
+  .del .del-pr.free { color:var(--green); }
+  .del.on .del-pr { color:var(--fire); }
+  .del.on .del-pr.free { color:var(--green); }
+
+  /* ═══ TOTAL BAR ═══ */
+  .total-bar {
+    margin:1.5rem 1rem 0;
+    background:linear-gradient(135deg, var(--fire), #B83214);
+    border-radius:var(--r);
+    padding:1.3rem 1.2rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .total-bar .tl { font-weight:500; font-size:0.9rem; color:rgba(255,255,255,0.85); }
+  .total-bar .tl small { display:block; font-size:0.72rem; color:rgba(255,255,255,0.55); font-weight:300; }
+  .total-bar .tv { font-weight:800; font-size:1.8rem; color:#fff; letter-spacing:-0.5px; }
+
+  .detail-panel {
+    margin:0 1rem;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--rs);
+    overflow:hidden;
+  }
+  .detail-panel .d-row {
+    display:flex;
+    justify-content:space-between;
+    padding:0.55rem 1rem;
+    font-size:0.8rem;
+    border-bottom:1px solid var(--border);
+  }
+  .detail-panel .d-row:last-child { border-bottom:none; }
+  .detail-panel .d-row .dn { color:var(--text2); font-weight:300; }
+  .detail-panel .d-row .dp { color:var(--text); font-weight:600; }
+
+  /* ═══ CTA ═══ */
+  .cta-section {
+    padding:2rem 1rem 3rem;
+    text-align:center;
+  }
+  .cta-msg {
+    font-size:0.88rem;
+    color:var(--text2);
+    font-weight:300;
+    line-height:1.6;
+    margin-bottom:1.2rem;
+    max-width:340px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .cta-msg strong { color:var(--text); font-weight:600; }
+  .wa-btn {
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:#25D366;
+    color:#fff;
+    font-family:'Outfit',sans-serif;
+    font-weight:600;
+    font-size:1rem;
+    padding:14px 32px;
+    border-radius:60px;
+    border:none;
+    cursor:pointer;
+    text-decoration:none;
+    box-shadow:0 6px 20px rgba(37,211,102,0.3);
+    transition:all 0.25s;
+  }
+  .wa-btn:active { transform:scale(0.96); }
+  .wa-btn:hover { box-shadow:0 10px 30px rgba(37,211,102,0.4); transform:translateY(-2px); }
+  .wa-btn svg { width:22px; height:22px; }
+
+  .footer-note {
+    text-align:center;
+    padding:0 1rem 2rem;
+    font-size:0.7rem;
+    color:var(--text3);
+    line-height:1.6;
+  }
+
+  /* ═══ BRAND BAR ═══ */
+  .brand-bar {
+    position:sticky;
+    top:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 1.2rem;
+    height:54px;
+    background:rgba(13,17,23,0.88);
+    backdrop-filter:blur(20px) saturate(1.4);
+    -webkit-backdrop-filter:blur(20px) saturate(1.4);
+    border-bottom:1px solid var(--border);
+  }
+  .brand-bar .brand-left {
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .brand-bar .brand-logo {
+    width:30px; height:30px;
+    border-radius:8px;
+    background:linear-gradient(135deg, var(--fire), #B83214);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 3px 10px rgba(232,70,30,0.25);
+  }
+  .brand-bar .brand-logo svg { width:16px; height:16px; }
+  .brand-bar .brand-name {
+    font-weight:700;
+    font-size:1rem;
+    letter-spacing:1.5px;
+  }
+  .brand-bar .brand-name span { color:var(--fire); }
+  .brand-bar .motto {
+    font-size:0.68rem;
+    font-weight:400;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    color:var(--text3);
+    font-style:italic;
+  }
+
+  /* ═══ ANIMATIONS ═══ */
+  @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+  .anim { animation:fadeUp 0.5s ease both; }
+  .d1{animation-delay:.05s} .d2{animation-delay:.1s} .d3{animation-delay:.15s}
+  .d4{animation-delay:.2s} .d5{animation-delay:.25s} .d6{animation-delay:.3s}
+</style>
+</head>
+<body>
+
+<!-- BRAND BAR -->
+<div class="brand-bar">
+  <div class="brand-left">
+    <div class="brand-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c1 3 4.5 5 4.5 9a6.5 6.5 0 1 1-9 0C7.5 7 11 5 12 2z"/></svg>
+    </div>
+    <div class="brand-name">BELL <span>FIRE</span></div>
+  </div>
+  <div class="motto">For Your Safety</div>
+</div>
+
+<!-- HEADER -->
+<div class="head">
+  <div class="flame">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c1 3 4.5 5 4.5 9a6.5 6.5 0 1 1-9 0C7.5 7 11 5 12 2z"/></svg>
+  </div>
+  <h1>Configura il tuo<br><span>Kit Sicurezza</span></h1>
+  <p class="sub">Kit obbligatorio per nuove attività<br>con meno di 3 dipendenti</p>
+</div>
+
+<!-- TUTORIAL -->
+<div class="tutorial anim">
+  <div class="tut-title">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+    Come funziona
+  </div>
+  <div class="steps">
+    <div class="step"><span class="num">1</span>Scorri la lista degli articoli obbligatori già inclusi nel kit base.</div>
+    <div class="step"><span class="num">2</span>Attiva le opzioni se vuoi sostituire alcuni articoli con le alternative.</div>
+    <div class="step"><span class="num">3</span>Scegli se preferisci la consegna o il ritiro in sede gratuito.</div>
+    <div class="step"><span class="num">4</span>Quando sei pronto, premi il pulsante WhatsApp e <strong>ricontattaci</strong> per confermare la tua scelta!</div>
+  </div>
+</div>
+
+<!-- KIT BASE -->
+<div class="section">
+  <div class="section-label">Kit Base</div>
+  <div class="section-title">Articoli Inclusi</div>
+
+  <div class="item anim d1" id="item-polvere">
+    <div class="ic red">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="6" width="8" height="16" rx="2"/><path d="M10 6V4h4v2"/><path d="M12 2v2"/><path d="M10 12h4"/><path d="M10 15h4"/><circle cx="12" cy="18" r="1"/></svg>
+    </div>
+    <div class="txt">
+      <div class="nm">Estintore a Polvere 6 kg</div>
+      <div class="ds">ABC · UNI EN 3-7</div>
+    </div>
+    <div class="pr">€ 40</div>
+  </div>
+
+  <div class="item anim d1 swap-in hidden" id="item-schiuma">
+    <div class="ic red">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="6" width="8" height="16" rx="2"/><path d="M10 6V4h4v2"/><path d="M12 2v2"/><path d="M9 11c1 0 1.5.8 3 .8s2-.8 3-.8"/><path d="M9 14c1 0 1.5.8 3 .8s2-.8 3-.8"/><circle cx="12" cy="18" r="1"/></svg>
+    </div>
+    <div class="txt">
+      <div class="nm">Estintore a Schiuma 6 lt</div>
+      <div class="ds">Classe A/B · Nessun residuo</div>
+    </div>
+    <div class="pr">€ 75</div>
+  </div>
+
+  <div class="item anim d2" id="item-staffa">
+    <div class="ic red">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16"/><path d="M8 6v12"/><path d="M16 6v12"/><path d="M6 10h12"/></svg>
+    </div>
+    <div class="txt">
+      <div class="nm">Staffa Porta Estintore</div>
+      <div class="ds">Acciaio verniciato RAL 3000</div>
+    </div>
+    <div class="pr">€ 2</div>
+  </div>
+
+  <div class="item anim d3" id="item-cartello-est">
+    <div class="ic red">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v4"/><path d="M10 10h4"/><path d="M8 16h8"/></svg>
+    </div>
+    <div class="txt">
+      <div class="nm">Cartello Estintore</div>
+      <div class="ds">ISO 7010 · Alluminio</div>
+    </div>
+    <div class="pr">€ 5</div>
+  </div>
+
+  <div class="item anim d3 swap-in hidden" id="item-piantana">
+    <div class="ic red">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M8 22h8"/><circle cx="12" cy="10" r="4"/></svg>
+    </div>
+    <div class="txt">
+      <div class="nm">Piantana Porta Estintore</div>
+      <div class="ds">Con cartello integrato · No fori a muro</div>
+    </div>
+    <div class="pr">€ 25</div>
+  </div>
+
+  <div class="item anim d4">
+    <div class="ic grn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M12 10v4"/><path d="M10 12h4"/><path d="M7 6V4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg>
+    </div>
+    <div class="txt">
+      <div class="nm">Cassetta Medica All. 2</div>
+      <div class="ds">D.M. 388 · &lt; 3 dipendenti</div>
+    </div>
+    <div class="pr">€ 25</div>
+  </div>
+
+  <div class="item anim d5">
+    <div class="ic grn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v4"/><path d="M10 10h4"/></svg>
+    </div>
+    <div class="txt">
+      <div class="nm">Cartello Cassetta Medica</div>
+      <div class="ds">ISO 7010 · Alluminio</div>
+    </div>
+    <div class="pr">€ 3</div>
+  </div>
+
+  <div class="item anim d6">
+    <div class="ic red">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M7 8h10"/><path d="M7 12h10"/><path d="M7 16h6"/></svg>
+    </div>
+    <div class="txt">
+      <div class="nm">Registro dei Controlli</div>
+      <div class="ds">D.P.R. 151/2011 · A4</div>
+    </div>
+    <div class="pr">€ 15</div>
+  </div>
+</div>
+
+<!-- OPZIONI -->
+<div class="section">
+  <div class="section-label">Personalizza</div>
+  <div class="section-title">Vuoi modificare qualcosa?</div>
+
+  <div class="opt" id="optA" onclick="toggle('A')">
+    <div class="pill" id="pillA"></div>
+    <div class="txt">
+      <div class="nm">Estintore a Schiuma</div>
+      <div class="ds">Sostituisce l'estintore a polvere — ideale se non vuoi residui</div>
+    </div>
+    <div class="diff">+€ 35</div>
+  </div>
+
+  <div class="opt" id="optB" onclick="toggle('B')">
+    <div class="pill" id="pillB"></div>
+    <div class="txt">
+      <div class="nm">Piantana Porta Estintore</div>
+      <div class="ds">Sostituisce staffa + cartello — nessun foro a muro</div>
+    </div>
+    <div class="diff">+€ 18</div>
+  </div>
+</div>
+
+<!-- CONSEGNA -->
+<div class="section">
+  <div class="section-label">Consegna</div>
+  <div class="section-title">Come vuoi ricevere il materiale?</div>
+
+  <div class="del-grid">
+    <div class="del on" id="del-cons" onclick="setDel('cons')">
+      <div class="del-ic">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="15" height="12" rx="1"/><path d="M16 10h4l3 4v4h-7V10z"/><circle cx="5.5" cy="20.5" r="1.5"/><circle cx="19.5" cy="20.5" r="1.5"/></svg>
+      </div>
+      <div class="del-nm">Consegna + Installazione</div>
+      <div class="del-ds">Presso la tua sede</div>
+      <div class="del-pr">€ 30</div>
+    </div>
+    <div class="del" id="del-rit" onclick="setDel('rit')">
+      <div class="del-ic">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/><path d="M3 9l2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/><path d="M12 3v6"/></svg>
+      </div>
+      <div class="del-nm">Ritiro in Sede</div>
+      <div class="del-ds">Vieni a prendere il materiale da noi</div>
+      <div class="del-pr free">Gratis</div>
+    </div>
+  </div>
+</div>
+
+<!-- TOTAL -->
+<div class="total-bar" id="totalBar">
+  <div class="tl">Totale<small>IVA esclusa</small></div>
+  <div class="tv" id="totalVal">€ 0</div>
+</div>
+
+<div class="detail-panel" id="detailPanel"></div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <p class="cta-msg">Quando hai scelto la configurazione che preferisci, <strong>ricontattaci su WhatsApp</strong> per confermare l'ordine e fissare la consegna!</p>
+  <a class="wa-btn" id="waBtn" href="#" target="_blank">
+    <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Contattaci su WhatsApp
+  </a>
+</div>
+
+<div class="footer-note">
+  Prezzi IVA esclusa salvo dove indicato · Offerta valida 30 giorni<br>
+  Bell Fire S.r.l.s. — Misterbianco (CT)
+</div>
+
+<script>
+  let A = false, B = false, del = 'cons';
+
+  function toggle(o) {
+    if (o === 'A') {
+      A = !A;
+      document.getElementById('optA').classList.toggle('on', A);
+      document.getElementById('item-polvere').classList.toggle('hidden', A);
+      document.getElementById('item-schiuma').classList.toggle('hidden', !A);
+    } else {
+      B = !B;
+      document.getElementById('optB').classList.toggle('on', B);
+      document.getElementById('item-staffa').classList.toggle('hidden', B);
+      document.getElementById('item-cartello-est').classList.toggle('hidden', B);
+      document.getElementById('item-piantana').classList.toggle('hidden', !B);
+    }
+    calc();
+  }
+
+  function setDel(d) {
+    del = d;
+    document.getElementById('del-cons').classList.toggle('on', d === 'cons');
+    document.getElementById('del-rit').classList.toggle('on', d === 'rit');
+    calc();
+  }
+
+  function calc() {
+    const items = [];
+    items.push(A ? {n:'Estintore a Schiuma 6 lt', p:75} : {n:'Estintore a Polvere 6 kg', p:40});
+    if (B) {
+      items.push({n:'Piantana Porta Estintore', p:25});
+    } else {
+      items.push({n:'Staffa Porta Estintore', p:2});
+      items.push({n:'Cartello Estintore', p:5});
+    }
+    items.push({n:'Cassetta Medica All. 2', p:25});
+    items.push({n:'Cartello Cassetta Medica', p:3});
+    items.push({n:'Registro dei Controlli', p:15});
+
+    const delCost = del === 'cons' ? 30 : 0;
+
+    const sub = items.reduce((s,i) => s + i.p, 0) + delCost;
+    const iva = Math.round(sub * 22) / 100;
+    const tot = sub + iva;
+
+    document.getElementById('totalVal').textContent = '€ ' + sub.toFixed(2);
+
+    // Detail panel
+    let h = '';
+    items.forEach(i => {
+      h += `<div class="d-row"><span class="dn">${i.n}</span><span class="dp">€ ${i.p.toFixed(2)}</span></div>`;
+    });
+    if (delCost) {
+      h += `<div class="d-row"><span class="dn">Consegna + Installazione</span><span class="dp">€ 30,00</span></div>`;
+    } else {
+      h += `<div class="d-row"><span class="dn">Ritiro in sede</span><span class="dp" style="color:var(--green)">Gratuito</span></div>`;
+    }
+    h += `<div class="d-row" style="border-top:1px solid var(--border);margin-top:4px;padding-top:0.65rem"><span class="dn">Imponibile</span><span class="dp">€ ${sub.toFixed(2)}</span></div>`;
+    h += `<div class="d-row"><span class="dn">IVA 22%</span><span class="dp">€ ${iva.toFixed(2)}</span></div>`;
+    h += `<div class="d-row" style="border-top:1px solid var(--border);margin-top:4px;padding-top:0.65rem"><span class="dn" style="color:var(--text);font-weight:600">Totale IVA inclusa</span><span class="dp" style="color:var(--fire);font-weight:700;font-size:0.95rem">€ ${tot.toFixed(2)}</span></div>`;
+    document.getElementById('detailPanel').innerHTML = h;
+
+    // WhatsApp message
+    let msg = '🔥 Ciao! Ho configurato il mio Kit Sicurezza:\n\n';
+    items.forEach(i => { msg += `• ${i.n}: €${i.p.toFixed(2)}\n`; });
+    msg += delCost ? `• Consegna + Installazione: €30,00\n` : `• Ritiro in sede: Gratuito\n`;
+    msg += `\n📋 Imponibile: €${sub.toFixed(2)}`;
+    msg += `\n💰 IVA 22%: €${iva.toFixed(2)}`;
+    msg += `\n✅ Totale IVA inclusa: €${tot.toFixed(2)}`;
+    msg += `\n\nVorrei confermare quest'ordine!`;
+
+    const phone = '39059XXXXXXX'; // <-- INSERISCI NUMERO QUI
+    document.getElementById('waBtn').href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+  }
+
+  calc();
+</script>
+</body>
+</html>
