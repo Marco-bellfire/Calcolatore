@@ -17,7 +17,10 @@ Analisi commerciale per **Bell Fire S.r.l.s.** — Misterbianco (CT) · settembr
 | Catania — associati Confindustria | 17 | [catania-confindustria.md](catania-confindustria.md) |
 | Siracusa — White List Prefettura | 19 | [siracusa-whitelist.md](siracusa-whitelist.md) |
 | Cantine Cerasuolo DOCG e Sicilia SE | 30 | [cantine-cerasuolo.md](cantine-cerasuolo.md) |
-| **Totale** | **402** | |
+| Siracusa — White List, 2ª tornata | 18 | [siracusa-whitelist.md](siracusa-whitelist.md) |
+| Catania — premi d'impresa e investimenti | 12 | [catania-premi-investimenti.md](catania-premi-investimenti.md) |
+| Catania — aree e settori scoperti | 31 | [catania-aree-scoperte.md](catania-aree-scoperte.md) |
+| **Totale** | **463** | |
 
 Schede per il primo contatto sui lead prioritari: [schede-chiamata.md](schede-chiamata.md)
 
