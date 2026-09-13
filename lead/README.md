@@ -2,14 +2,21 @@
 
 Analisi commerciale per **Bell Fire S.r.l.s.** — Misterbianco (CT) · settembre 2026
 
-| Provincia | Lead verificati | File |
+| Provincia | Lead | File |
 |---|---|---|
-| Catania | 23 | [catania.md](catania.md) |
-| Messina | 35 | [messina.md](messina.md) |
-| Ragusa | 33 | [ragusa.md](ragusa.md) |
-| Siracusa | 29 | [siracusa.md](siracusa.md) |
-| Enna | 22 | [enna.md](enna.md) |
-| **Totale** | **142** | |
+| Catania — provincia | 23 | [catania.md](catania.md) |
+| Catania — Zona Industriale e limitrofe | 46 | [catania-zi.md](catania-zi.md) |
+| Messina — prima tornata | 35 | [messina.md](messina.md) |
+| Messina — seconda tornata | 36 | [messina-2.md](messina-2.md) |
+| Ragusa — prima tornata | 33 | [ragusa.md](ragusa.md) |
+| Ragusa — seconda tornata | 44 | [ragusa-2.md](ragusa-2.md) |
+| Siracusa — provincia | 29 | [siracusa.md](siracusa.md) |
+| Siracusa — indotto industriale | 44 | [siracusa-indotto.md](siracusa-indotto.md) |
+| Enna — prima tornata | 22 | [enna.md](enna.md) |
+| Enna — seconda tornata | 24 | [enna-2.md](enna-2.md) |
+| **Totale** | **336** | |
+
+Schede per il primo contatto sui lead prioritari: [schede-chiamata.md](schede-chiamata.md)
 
 ---
 
@@ -29,6 +36,7 @@ Chi sta fuori da questo cerchio ha senso solo aggregando più clienti per trasfe
 
 | # | Azienda | Provincia | Perché adesso |
 |---|---|---|---|
+| 0 | **Boccone del Povero** (Suore Serve dei Poveri) | EN | **Marzo 2026: i Vigili del Fuoco hanno fatto chiudere un reparto per non conformità, e la congregazione ha annunciato lavori di adeguamento.** Un cliente che *deve* intervenire adesso. La stessa congregazione gestisce la struttura di Calascibetta che ne ha assorbito gli ospiti: una trattativa, due strutture |
 | 1 | **Sibeg (Coca-Cola)** | CT | Magazzino automatizzato 43.000 posti pallet, Pick Tower 28 m. Cantiere avviato feb 2026, fine lug 2027: la progettazione sprinkler è aperta ora |
 | 2 | **3Sun Gigafactory** (Enel GP) | CT | Ampliamento 200 MW → 3 GW con 560 M€ finanziati. Camere bianche e gas tecnici |
 | 3 | **Gruppo Arena** | CT | Piano industriale 190 M€ 2026-28. Il più grande CeDi della Sicilia, 87.000 mq |
