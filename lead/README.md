@@ -22,7 +22,8 @@ Analisi commerciale per **Bell Fire S.r.l.s.** — Misterbianco (CT) · settembr
 | Catania — aree e settori scoperti | 31 | [catania-aree-scoperte.md](catania-aree-scoperte.md) |
 | Catania — Vetrina Confindustria (elenco integrale) | 62 | [catania-confindustria-vetrina.md](catania-confindustria-vetrina.md) |
 | Siracusa — White List integrale (fonte primaria) | 219 | [siracusa-whitelist-integrale.md](siracusa-whitelist-integrale.md) |
-| **Totale** | **744** | |
+| Catania — imprese associate ANCE | 89 | [catania-ance.md](catania-ance.md) |
+| **Totale** | **833** | |
 
 > I lotti 6 e 11 (White List ricostruita per via indiretta) sono **superati** dal lotto 17, che viene dalla fonte primaria della Prefettura e contiene sezioni e scadenze esatte. Restano come storico.
 
