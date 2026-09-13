@@ -20,7 +20,8 @@ Analisi commerciale per **Bell Fire S.r.l.s.** — Misterbianco (CT) · settembr
 | Siracusa — White List, 2ª tornata | 18 | [siracusa-whitelist.md](siracusa-whitelist.md) |
 | Catania — premi d'impresa e investimenti | 12 | [catania-premi-investimenti.md](catania-premi-investimenti.md) |
 | Catania — aree e settori scoperti | 31 | [catania-aree-scoperte.md](catania-aree-scoperte.md) |
-| **Totale** | **463** | |
+| Catania — Vetrina Confindustria (elenco integrale) | 62 | [catania-confindustria-vetrina.md](catania-confindustria-vetrina.md) |
+| **Totale** | **525** | |
 
 Schede per il primo contatto sui lead prioritari: [schede-chiamata.md](schede-chiamata.md)
 
